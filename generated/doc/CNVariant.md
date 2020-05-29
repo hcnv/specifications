@@ -111,7 +111,16 @@ __Description:__ The document describes a draft variant schema, for modeling CN 
 
 * type: integer
 
-base ploidy of the genomic reference
+Base ploidy of the sample for this reference. This may vary depending on organism or
+specific cell/tissue type as well as for sex chromosomes. While CNVs are usually reported
+as relative changes w/ respect to a "balanced" genome state, a `basePloidy` value
+can help with the interpretation of absolute copy number counts.
+Examples:
+* autosome in diploid karyotype: 2
+* complete hydatiform mole: 1
+* X-chromosome in karyotypically "normal" male: 1
+* chromosome 2 in cell line NCI H-82 `cellosaurus:CVCL_1591`): 3
+
 
 
 #### digest
@@ -158,6 +167,17 @@ variant from callset" storage systems
 miscellaneous key-value pairs (where values can be objects)
 
 
+##### `info` Value Example  
+
+```
+{
+   "identifiers" : [
+      "GPL6801"
+   ],
+   "platform" : "Affymetrix SNP6 Genotyping array",
+   "platform_type" : "SNP array"
+}
+```
 
 #### referenceGenome
 

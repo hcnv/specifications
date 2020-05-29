@@ -29,7 +29,7 @@
    },
    "properties" : {
       "basePloidy" : {
-         "description" : "base ploidy of the genomic reference",
+         "description" : "Base ploidy of the sample for this reference. This may vary depending on organism or\nspecific cell/tissue type as well as for sex chromosomes. While CNVs are usually reported\nas relative changes w/ respect to a \"balanced\" genome state, a `basePloidy` value\ncan help with the interpretation of absolute copy number counts.\nExamples:\n* autosome in diploid karyotype: 2\n* complete hydatiform mole: 1\n* X-chromosome in karyotypically \"normal\" male: 1\n* chromosome 2 in cell line NCI H-82 `cellosaurus:CVCL_1591`): 3\n",
          "type" : "integer"
       },
       "digest" : {
@@ -52,6 +52,15 @@
       },
       "info" : {
          "description" : "miscellaneous key-value pairs (where values can be objects)\n",
+         "examples" : [
+            {
+               "identifiers" : [
+                  "GPL6801"
+               ],
+               "platform" : "Affymetrix SNP6 Genotyping array",
+               "platform_type" : "SNP array"
+            }
+         ],
          "type" : "object"
       },
       "referenceGenome" : {
@@ -116,8 +125,8 @@
    "required" : {
       "allof" : [
          "referenceId",
-         "start",
-         "end",
+         "svarStart",
+         "svarEnd",
          "variantType"
       ]
    },

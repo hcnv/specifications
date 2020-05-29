@@ -19,8 +19,8 @@ type: object
 required:
   allof:
     - referenceId
-    - start
-    - end
+    - svarStart
+    - svarEnd
     - variantType
 
 properties:
@@ -91,7 +91,16 @@ properties:
 
   basePloidy:
     type: integer
-    description: base ploidy of the genomic reference
+    description: |
+      Base ploidy of the sample for this reference. This may vary depending on organism or
+      specific cell/tissue type as well as for sex chromosomes. While CNVs are usually reported
+      as relative changes w/ respect to a "balanced" genome state, a `basePloidy` value
+      can help with the interpretation of absolute copy number counts.
+      Examples:
+      * autosome in diploid karyotype: 2
+      * complete hydatiform mole: 1
+      * X-chromosome in karyotypically "normal" male: 1
+      * chromosome 2 in cell line NCI H-82 `cellosaurus:CVCL_1591`): 3
 
   featureAnnotations:
     type: array
@@ -101,3 +110,8 @@ properties:
     type: object
     description: |
       miscellaneous key-value pairs (where values can be objects)
+    examples:
+      - platform: Affymetrix SNP6 Genotyping array
+        platform_type: SNP array
+        identifiers:
+          - GPL6801
