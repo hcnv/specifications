@@ -72,10 +72,6 @@ __Description:__ The document describes a draft variant schema, for modeling CN 
     <td>string</td>
   </tr>
   <tr>
-    <th>end</th>
-    <td>https://github.com/ga4gh/vr-spec/blob/116-patch-future-plans/schema/vr.json#118</td>
-  </tr>
-  <tr>
     <th>featureAnnotations</th>
     <td>array of "object"</td>
   </tr>
@@ -96,7 +92,11 @@ __Description:__ The document describes a draft variant schema, for modeling CN 
     <td>string</td>
   </tr>
   <tr>
-    <th>start</th>
+    <th>svarEnd</th>
+    <td></td>
+  </tr>
+  <tr>
+    <th>svarStart</th>
     <td>https://github.com/ga4gh/vr-spec/blob/116-patch-future-plans/schema/vr.json#118</td>
   </tr>
   <tr>
@@ -129,13 +129,6 @@ variant from callset" storage systems
 ```
 "4:12282-46465:DEL"
 ```
-
-#### end
-
-* type: https://github.com/ga4gh/vr-spec/blob/116-patch-future-plans/schema/vr.json#118
-
-see start
-
 
 #### featureAnnotations
 
@@ -197,16 +190,35 @@ obviates the separate need for a `referenceGenome` parameter'
 "NC_000006.12"
 ```
 
-#### start
+#### svarEnd
+
+* type: 
+
+- Information about range in which the end of the CNV has been mapped. This
+  corresponds to the GA4GH GKS VRS "SimpleInterval". Also see annotation for `svarStart`.
+
+
+##### `svarEnd` Value Example  
+
+```
+{
+   "end" : "138394717",
+   "start" : "137000000"
+}
+```
+
+#### svarStart
 
 * type: https://github.com/ga4gh/vr-spec/blob/116-patch-future-plans/schema/vr.json#118
 
 - Information about range in which the start of the CNV has been mapped. This
   corresponds to the GA4GH GKS VRS "SimpleInterval".
 - Optional pointer to fusion partner? Position or ID?
+- The positions are annotated using a 0-based "interbase" coordinate system
+(_cave_: differs from HGVS and browser displays).
 
 
-##### `start` Value Example  
+##### `svarStart` Value Example  
 
 ```
 {

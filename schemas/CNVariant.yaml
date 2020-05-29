@@ -60,21 +60,27 @@ properties:
       - NC_000009
       - NC_000006.12
 
-  start:
+  svarStart:
     allof:
       - $ref: 'https://github.com/ga4gh/vr-spec/blob/116-patch-future-plans/schema/vr.json#118'
       - description: |
           - Information about range in which the start of the CNV has been mapped. This
             corresponds to the GA4GH GKS VRS "SimpleInterval".
           - Optional pointer to fusion partner? Position or ID?
+          - The positions are annotated using a 0-based "interbase" coordinate system
+          (_cave_: differs from HGVS and browser displays).
       - examples:
         - start: 75000000
           end: 750050000
 
-  end:
+  svarEnd:
     allof:
-      - $ref: 'https://github.com/ga4gh/vr-spec/blob/116-patch-future-plans/schema/vr.json#118'
-      - description: see start
+      - description: |
+          - Information about range in which the end of the CNV has been mapped. This
+            corresponds to the GA4GH GKS VRS "SimpleInterval". Also see annotation for `svarStart`.
+      - examples:
+        - start: 137000000
+          end: 138394717
 
   variantType:
     type: object
