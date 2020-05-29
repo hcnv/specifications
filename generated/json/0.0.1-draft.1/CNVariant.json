@@ -72,7 +72,11 @@
          "type" : "string"
       },
       "referenceId" : {
-         "description" : "Identifier for a reference sequence, generally describing a chromosome.\nTODO: Evaluate the use of standard sequence identifiers in the form of CURIEs\nor objects. \n",
+         "description" : "* Identifier for a reference sequence, generally describing a chromosome.\n* The use of standard sequence identifiers with version (e.g. `NC_000009.12`)\nobviates the separate need for a `referenceGenome` parameter'\n* TODO: Stricter definition of identifier use\n",
+         "examples" : [
+            "NC_000009",
+            "NC_000006.12"
+         ],
          "type" : "string"
       },
       "start" : {
@@ -103,6 +107,14 @@
          ],
          "type" : "object"
       }
+   },
+   "required" : {
+      "allof" : [
+         "referenceId",
+         "start",
+         "end",
+         "variantType"
+      ]
    },
    "title" : "CNVariant",
    "type" : "object"

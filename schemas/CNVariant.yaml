@@ -16,6 +16,12 @@ meta:
   used_by:
     - description: ELIXIR hCNV community
 type: object
+required:
+  allof:
+    - referenceId
+    - start
+    - end
+    - variantType
 
 properties:
 
@@ -46,9 +52,13 @@ properties:
   referenceId:
     type: string
     description: |
-      Identifier for a reference sequence, generally describing a chromosome.
-      TODO: Evaluate the use of standard sequence identifiers in the form of CURIEs
-      or objects. 
+      * Identifier for a reference sequence, generally describing a chromosome.
+      * The use of standard sequence identifiers with version (e.g. `NC_000009.12`)
+      obviates the separate need for a `referenceGenome` parameter'
+      * TODO: Stricter definition of identifier use
+    examples:
+      - NC_000009
+      - NC_000006.12
 
   start:
     allof:
@@ -60,6 +70,7 @@ properties:
       - examples:
         - start: 75000000
           end: 750050000
+
   end:
     allof:
       - $ref: 'https://github.com/ga4gh/vr-spec/blob/116-patch-future-plans/schema/vr.json#118'

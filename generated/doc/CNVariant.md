@@ -182,11 +182,20 @@ GRC reference genome edition
 
 * type: string
 
-Identifier for a reference sequence, generally describing a chromosome.
-TODO: Evaluate the use of standard sequence identifiers in the form of CURIEs
-or objects. 
+* Identifier for a reference sequence, generally describing a chromosome.
+* The use of standard sequence identifiers with version (e.g. `NC_000009.12`)
+obviates the separate need for a `referenceGenome` parameter'
+* TODO: Stricter definition of identifier use
 
 
+##### `referenceId` Value Examples  
+
+```
+"NC_000009"
+```
+```
+"NC_000006.12"
+```
 
 #### start
 
