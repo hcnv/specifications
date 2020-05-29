@@ -21,9 +21,49 @@
          }
       ],
       "sb_status" : "playground",
-      "used_by" : null
+      "used_by" : [
+         {
+            "description" : "ELIXIR hCNV community"
+         }
+      ]
    },
    "properties" : {
+      "basePloidy" : {
+         "description" : "base ploidy of the genomic reference",
+         "type" : "integer"
+      },
+      "digest" : {
+         "description" : "* Concatenated unique specific elements of the variant.\n* Optional, convenience element to derive unique variants in \"individual\nvariant from callset\" storage systems\n* Possible use of e.g. HGVS-style annotations, but _not_ defined as such\n",
+         "examples" : [
+            "4:12282-46465:DEL"
+         ],
+         "type" : "string"
+      },
+      "end" : {
+         "allof" : [
+            {
+               "$ref" : "https://github.com/ga4gh/vr-spec/blob/116-patch-future-plans/schema/vr.json#118"
+            },
+            {
+               "description" : "see start"
+            }
+         ]
+      },
+      "featureAnnotations" : {
+         "items" : "object",
+         "type" : "array"
+      },
+      "id" : {
+         "description" : "* local-unique identifier of this variant (referenced as \"variant_id\")\n* Optional\n",
+         "examples" : [
+            "amvar-8754-7751-1119-8539"
+         ],
+         "type" : "string"
+      },
+      "info" : {
+         "description" : "miscellaneous key-value pairs (where values can be objects)\n",
+         "type" : "object"
+      },
       "referenceGenome" : {
          "description" : "GRC reference genome edition",
          "examples" : [
@@ -36,46 +76,35 @@
          "type" : "string"
       },
       "start" : {
-         "basePloidy" : {
-            "description" : "base ploidy of the genomic reference",
-            "type" : "integer"
-         },
-         "description" : "- Information about range in which the start of the CNV has been mapped. This\n  corresponds to the GA4GH GKS VRS \"SimpleInterval\".\n- Optional pointer to fusion partner? Position or ID?\n",
-         "end" : {
-            "description" : "see start",
-            "type" : {
+         "allof" : [
+            {
                "$ref" : "https://github.com/ga4gh/vr-spec/blob/116-patch-future-plans/schema/vr.json#118"
+            },
+            {
+               "description" : "- Information about range in which the start of the CNV has been mapped. This\n  corresponds to the GA4GH GKS VRS \"SimpleInterval\".\n- Optional pointer to fusion partner? Position or ID?\n"
+            },
+            {
+               "examples" : [
+                  {
+                     "end" : "750050000",
+                     "start" : "75000000"
+                  }
+               ]
             }
-         },
+         ]
+      },
+      "variantType" : {
+         "description" : "status as keyword or CURIE, quantitative parameters",
          "examples" : [
             {
-               "end" : "750050000",
-               "start" : "75000000"
+               "cn" : "3",
+               "state" : "DUP"
             }
          ],
-         "featureAnnotations" : {
-            "items" : "object",
-            "type" : "array"
-         },
-         "info" : {
-            "description" : "miscellaneous key-value pairs (where values can be objects)\n",
-            "type" : "object"
-         },
-         "type" : {
-            "$ref" : "https://github.com/ga4gh/vr-spec/blob/116-patch-future-plans/schema/vr.json#118"
-         },
-         "variantType" : {
-            "description" : "status as keyword or CURIE, quantitative parameters",
-            "examples" : [
-               {
-                  "cn" : "3",
-                  "state" : "DUP"
-               }
-            ],
-            "type" : "object"
-         }
+         "type" : "object"
       }
    },
-   "title" : "CNVariant"
+   "title" : "CNVariant",
+   "type" : "object"
 }
 

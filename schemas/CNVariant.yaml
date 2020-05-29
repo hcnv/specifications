@@ -5,54 +5,82 @@ description: |
   The document describes a draft variant schema, for modeling CN variant objects.
 meta:
   contributors:
-  - description: ELIXIR hCNV team
-    id: https://hcnv.github.io/categories/people.html
-  - description: Michael Baudis
-    id: orcid:0000-0002-9903-4248
+    - description: ELIXIR hCNV team
+      id: https://hcnv.github.io/categories/people.html
+    - description: Michael Baudis
+      id: orcid:0000-0002-9903-4248
   provenance:
-  - description: hCNV community project
-    id: https://hcnv.github.io/schemas/specifications/
+    - description: hCNV community project
+      id: https://hcnv.github.io/schemas/specifications/
   sb_status: playground
   used_by:
+    - description: ELIXIR hCNV community
+type: object
+
 properties:
+
+  id:
+    description: |
+      * local-unique identifier of this variant (referenced as "variant_id")
+      * Optional
+    type: string
+    examples:
+      - 'amvar-8754-7751-1119-8539'
+
+  digest:
+    description: |
+      * Concatenated unique specific elements of the variant.
+      * Optional, convenience element to derive unique variants in "individual
+      variant from callset" storage systems
+      * Possible use of e.g. HGVS-style annotations, but _not_ defined as such
+    type: string
+    examples:
+      - '4:12282-46465:DEL'
+
   referenceGenome:
     type: string
     description: GRC reference genome edition
     examples:
       - GRCh38
+
   referenceId:
     type: string
     description: |
       Identifier for a reference sequence, generally describing a chromosome.
       TODO: Evaluate the use of standard sequence identifiers in the form of CURIEs
       or objects. 
+
   start:
-    type:
-      $ref: 'https://github.com/ga4gh/vr-spec/blob/116-patch-future-plans/schema/vr.json#118'
-    description: |
-      - Information about range in which the start of the CNV has been mapped. This
-        corresponds to the GA4GH GKS VRS "SimpleInterval".
-      - Optional pointer to fusion partner? Position or ID?
+    allof:
+      - $ref: 'https://github.com/ga4gh/vr-spec/blob/116-patch-future-plans/schema/vr.json#118'
+      - description: |
+          - Information about range in which the start of the CNV has been mapped. This
+            corresponds to the GA4GH GKS VRS "SimpleInterval".
+          - Optional pointer to fusion partner? Position or ID?
+      - examples:
+        - start: 75000000
+          end: 750050000
+  end:
+    allof:
+      - $ref: 'https://github.com/ga4gh/vr-spec/blob/116-patch-future-plans/schema/vr.json#118'
+      - description: see start
+
+  variantType:
+    type: object
+    description: status as keyword or CURIE, quantitative parameters
     examples:
-      - start: 75000000
-        end: 750050000
-    end:
-      type:
-        $ref: 'https://github.com/ga4gh/vr-spec/blob/116-patch-future-plans/schema/vr.json#118'
-      description: see start
-    variantType:
-      type: object
-      description: status as keyword or CURIE, quantitative parameters
-      examples:
-        - state: "DUP"
-          cn: 3
-    basePloidy:
-      type: integer
-      description: base ploidy of the genomic reference
-    featureAnnotations:
-      type: array
-      items: object
-    info:
-      type: object
-      description: |
-        miscellaneous key-value pairs (where values can be objects)
+      - state: "DUP"
+        cn: 3
+
+  basePloidy:
+    type: integer
+    description: base ploidy of the genomic reference
+
+  featureAnnotations:
+    type: array
+    items: object
+
+  info:
+    type: object
+    description: |
+      miscellaneous key-value pairs (where values can be objects)
