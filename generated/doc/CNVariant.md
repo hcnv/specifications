@@ -93,7 +93,7 @@ __Description:__ The document describes a draft variant schema, for modeling CN 
   </tr>
   <tr>
     <th>svarEnd</th>
-    <td></td>
+    <td>https://github.com/ga4gh/vr-spec/blob/116-patch-future-plans/schema/vr.json#118</td>
   </tr>
   <tr>
     <th>svarStart</th>
@@ -212,7 +212,7 @@ obviates the separate need for a `referenceGenome` parameter'
 
 #### svarEnd
 
-* type: 
+* type: https://github.com/ga4gh/vr-spec/blob/116-patch-future-plans/schema/vr.json#118
 
 - Information about range in which the end of the CNV has been mapped. This
   corresponds to the GA4GH GKS VRS "SimpleInterval". Also see annotation for `svarStart`.
