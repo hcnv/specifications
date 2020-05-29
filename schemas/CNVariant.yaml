@@ -18,8 +18,8 @@ properties:
   referenceGenome:
     type: string
     description: GRC reference genome edition
-      examples:
-        - GRCh38
+    examples:
+      - GRCh38
   referenceId:
     type: string
     description: |

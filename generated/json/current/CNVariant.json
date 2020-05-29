@@ -1,0 +1,81 @@
+{
+   "$id" : "https://hcnv.github.io/schemas/specifications/CNVariant/0.0.1-draft.1",
+   "$schema" : "http://json-schema.org/draft-07/schema#",
+   "description" : "The document describes a draft variant schema, for modeling CN variant objects.\n",
+   "examples" : [],
+   "meta" : {
+      "contributors" : [
+         {
+            "description" : "ELIXIR hCNV team",
+            "id" : "https://hcnv.github.io/categories/people.html"
+         },
+         {
+            "description" : "Michael Baudis",
+            "id" : "orcid:0000-0002-9903-4248"
+         }
+      ],
+      "provenance" : [
+         {
+            "description" : "hCNV community project",
+            "id" : "https://hcnv.github.io/schemas/specifications/"
+         }
+      ],
+      "sb_status" : "playground",
+      "used_by" : null
+   },
+   "properties" : {
+      "referenceGenome" : {
+         "description" : "GRC reference genome edition",
+         "examples" : [
+            "GRCh38"
+         ],
+         "type" : "string"
+      },
+      "referenceId" : {
+         "description" : "Identifier for a reference sequence, generally describing a chromosome.\nTODO: Evaluate the use of standard sequence identifiers in the form of CURIEs\nor objects. \n",
+         "type" : "string"
+      },
+      "start" : {
+         "basePloidy" : {
+            "description" : "base ploidy of the genomic reference",
+            "type" : "integer"
+         },
+         "description" : "- Information about range in which the start of the CNV has been mapped. This\n  corresponds to the GA4GH GKS VRS \"SimpleInterval\".\n- Optional pointer to fusion partner? Position or ID?\n",
+         "end" : {
+            "description" : "see start",
+            "type" : {
+               "$ref" : "https://github.com/ga4gh/vr-spec/blob/116-patch-future-plans/schema/vr.json#118"
+            }
+         },
+         "examples" : [
+            {
+               "end" : "750050000",
+               "start" : "75000000"
+            }
+         ],
+         "featureAnnotations" : {
+            "items" : "object",
+            "type" : "array"
+         },
+         "info" : {
+            "description" : "miscellaneous key-value pairs (where values can be objects)\n",
+            "type" : "object"
+         },
+         "type" : {
+            "$ref" : "https://github.com/ga4gh/vr-spec/blob/116-patch-future-plans/schema/vr.json#118"
+         },
+         "variantType" : {
+            "description" : "status as keyword or CURIE, quantitative parameters",
+            "examples" : [
+               {
+                  "cn" : "3",
+                  "state" : "DUP"
+               }
+            ],
+            "type" : "object"
+         }
+      }
+   },
+   "title" : "CNVariant"
+}
+

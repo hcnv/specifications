@@ -1,26 +1,24 @@
 ---
-github_organisation: ga4gh-beacon
-site_domain_name: genomebeacons.org
-url: 'http://genomebeacons.org'
-tools_repo: tools
+github_organisation: hcnv
+site_domain_name: hcnv.github.io
+url: 'http://hcnv.github.io'
 tags:
   - code
   - specification
-  - v2
 categories:
   - schemas
 schema_repos:
-  specification-v2-test-schemas:
+  specifications:
     schema_dirs:
       - schemas
     tags:
-      - v2
+      - CNV
 out_dirnames:
   json: generated/json
   markdown: generated/doc
   examples: generated/examples
 webdocs:
-  repo: 'ga4gh-beacon.github.io'
+  repo: 'hcnv.github.io'
   jekylldir: 'pages/_schemas'
   schemadir: 'schemas'
   web_schemas_rel: "/schemas"
@@ -29,8 +27,7 @@ generator_prefix: '+generated__'
 schema_disclaimer: |
   <hr/>
   <div id="schema-footer">
-  This schema representation is for information and testing purposes. The authorative 
-  version remains with the main Beacon development project.
+  This schema representation is for information and testing purposes.
   </div>
 jekyll_excerpt_separator: "<!--more-->"
 prefix_expansions:
